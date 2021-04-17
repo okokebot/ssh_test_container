@@ -16,9 +16,10 @@ RUN sed -i 's/^X11Forwarding no/X11Forwarding yes/g' /etc/ssh/sshd_config
 RUN adduser -D ssh-user
 # It will cause an ssh login error if user has no password
 RUN echo "ssh-user:ssh-pass" | chpasswd
+
 # If need sudo
-# RUN apk add --no-cache sudo
-# RUN echo "ssh-user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN apk add --no-cache sudo
+RUN echo "ssh-user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER ssh-user
 RUN mkdir $HOME/.ssh

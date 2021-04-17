@@ -8,7 +8,7 @@ services:
       dockerfile: ./Dockerfile
     working_dir: /root
     volumes:
-      - ./share:/root/share
+      - ./share:/home/ssh-user
     ports:
       - "20080:80"
       - "20443:443"
